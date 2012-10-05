@@ -1,3 +1,7 @@
+[user]
+	name = Peter Slagter
+	email = peter.slagter@procurios.nl
+
 [alias]
 	# View the SHA, description, and history graph of the latest 20 commits
 	l = log --pretty=oneline -n 20 --graph
@@ -25,42 +29,45 @@
 	reb = "!r() { git rebase -i HEAD~$1; }; r"
 	# Undo a `git push`
 	undopush = push -f origin HEAD^:master
-
-[apply]
-	# Detect whitespace errors when applying a patch
-	whitespace = fix
+	# Show log of my last 20 commits
+	lgmine = log --pretty=oneline -20 --author="peter"
 
 [core]
-	# Use custom `.gitignore` and `.gitattributes`
+	editor = nano
 	excludesfile = ~/.gitignore
-	attributesfile = ~/.gitattributes
-	# Treat spaces before tabs, lines that are indented with 8 or more spaces, and all kinds of trailing whitespace as an error
-	whitespace = space-before-tab,indent-with-non-tab,trailing-space
 
 [color]
-	# Use colors in Git commands that are capable of colored output when outputting to the terminal
-	ui = auto
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
+	ui = true
 [color "branch"]
-	current = yellow reverse
+	current = yellow black
 	local = yellow
-	remote = green
+	remote = magenta
 [color "diff"]
 	meta = yellow bold
 	frag = magenta bold
-	old = red bold
-	new = green bold
+	old = red reverse
+	new = green reverse
+	whitespace = white reverse
 [color "status"]
 	added = yellow
 	changed = green
-	untracked = cyan
-[merge]
-	# Include summaries of merged commits in newly created merge commit messages
-	log = true
+	untracked = cyan reverse
+	branch = magenta
 
-# Use `origin` as the default remote on the `master` branch in all cases
-[branch "master"]
-	remote = origin
-	merge = refs/heads/master
+[probase]
+	auto-run-setup = true
+
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
 
 # URL shorthands
 [url "git@github.com:"]
