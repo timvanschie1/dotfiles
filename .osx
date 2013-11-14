@@ -11,9 +11,9 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 ###############################################################################
 
 # Set computer name (as done via System Preferences → Sharing)
-sudo scutil --set ComputerName "MBPeter"
-sudo scutil --set HostName "MBPeter"
-sudo scutil --set LocalHostName "MBPeter"
+sudo scutil --set ComputerName "Tim van Schie"
+sudo scutil --set HostName "Tim van Schie"
+sudo scutil --set LocalHostName "Tim van Schie"
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "MBPeter"
 
 # Menu bar: disable transparency
